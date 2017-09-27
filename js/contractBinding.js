@@ -16,6 +16,7 @@ function startApp() {
 function loadContract() {
    if (!web3.isConnected()) {
     console.error('CANT CONNECT TO PARITY')
+     $('#no-web3-modal').modal('show')
     return
   }
 
@@ -59,6 +60,7 @@ function getMessage() {
     }
 
     document.getElementById('message').textContent = message
+    $('#message').transition('tada')
   })
 }
 

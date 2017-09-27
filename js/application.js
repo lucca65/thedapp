@@ -9,8 +9,8 @@ $('#submit').on('click', () => updateMessage())
 // // Tip button
 var tipButton = document.querySelector('#tip')
 tipButton.addEventListener('click', function() {
-  if (typeof web3 === 'undefined') {
-    return renderMessage('You need to install MetaMask to use this feature.  https://metamask.io')
+  if (typeof window.web3 === 'undefined' || !window.web3.isConnected()) {
+    $('#no-web3-modal').modal('show')
   }
 
   var user_address = web3.eth.accounts[0]
@@ -24,6 +24,6 @@ tipButton.addEventListener('click', function() {
     // If you get a transactionHash, you can assume it was sent,
     // or if you want to guarantee it was received, you can poll
     // for that transaction to be mined first.
-    alert('Thank you!!')
+    $('#thanks-modal').modal('show')
   })
 })
