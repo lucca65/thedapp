@@ -1,0 +1,29 @@
+{
+  "name": "thedapp",
+  "version": "1.0.0",
+  "description": "Demonstration of Web3 for The Conf 2017",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucca65/thedapp.git"
+  },
+  "keywords": [
+    "solidity",
+    "web3js",
+    "javascript",
+    "theconf",
+    "ethereum"
+  ],
+  "author": "Julien Lucca (github.com/lucca65)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucca65/thedapp/issues"
+  },
+  "homepage": "https://github.com/lucca65/thedapp#readme",
+  "scripts": {
+    "start": "node_modules/.bin/http-server . -d"
+  },
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
