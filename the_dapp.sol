@@ -6,6 +6,7 @@ contract TheDapp {
   address public owner;
   uint256 public fee;
 
+  // TODO: CHANGE THIS NAME FOR A BETTER MORE EVENT LIKE ONE
   event UpdateMessage();
 
   modifier onlyOwner() {
@@ -20,12 +21,8 @@ contract TheDapp {
 
   public function setMessage(string _message) payable {
     require(msg.value == this.fee)
-    this.message = _message;
+      this.message = _message;
     UpdateMessage();
-  }
-
-  public function getMessage() constant returns (string) {
-    return message;
   }
 
   public withdraw() onlyOwner {
