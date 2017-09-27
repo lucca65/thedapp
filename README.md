@@ -7,7 +7,6 @@ Make sure you have your NodeJS stack working; give it a shot to the [official do
 Now run:
 
 ```shell
-$ git remote add origin git@github.com:lucca65/thedapp.git
+$ git clone git@github.com:lucca65/thedapp.git
 $ cd thedapp
-$ npm i
 ```
