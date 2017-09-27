@@ -17,9 +17,9 @@ tipButton.addEventListener('click', function() {
   web3.eth.sendTransaction({
     to: '0x00Df8e77d5fA0630144e147cCDB0B504F9C05A8D',
     from: user_address,
-    value: web3.toWei('1', 'finney')
+    value: web3.toWei('0.1', 'finney')
   }, function (err, transactionHash) {
-    if (err) return renderMessage('Oh no!: ' + err.message)
+    if (err) return alert('Oh no!: ' + err.message)
 
     // If you get a transactionHash, you can assume it was sent,
     // or if you want to guarantee it was received, you can poll
