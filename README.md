@@ -20,3 +20,4 @@ Now navigate to `localhost:8080` and test your solution
 ## Notes
 
 - This project uses ES Script 2015+, so some browsers may not run it well, check your updates!
+- We do a little of dirty coding to update some UI elements, but we do that so no external framework is involved. That way you have a purer reference
