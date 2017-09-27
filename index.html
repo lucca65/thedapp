@@ -1,23 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>The Dapp</title>
-        <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
-    </head>
 
-    <body>
-        <h1 id="message"></h1>
-        <select id="accounts_list" class="ui fluid dropdown"></select>
-        <input id="messageInput" name="amount" type="text" value="" placeholder="Message" />
-        <button id="submit" onclick="setMessage()">Vai filhão</button>
+<head>
+    <title>The Dapp</title>
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
 
-        <script
-            src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-        <script src="js/semantic.min.js"></script>
-        <script src="js/web3.min.js"></script>
-        <script src="js/contractBinding.js"></script>
-    </body>
+<body>
+    <a href="https://github.com/lucca65/thedapp"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+    <div class="ui two column centered grid box">
+        <div class="row">
+            <div class="column">
+                <div id="postedMessage" class="ui success message hidden"> <!-- Update successful message -->
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Sucess!
+                    </div>
+                    <p>Your message was sent to the smart contract correctly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ui two column centered grid">
+        <div class="row">
+            <div class="column">
+                <div class="ui segments">
+                    <div class="ui center aligned inverted olive segment">
+                        <h1 id="message"></h1>
+                    </div>
+                    <div class="ui segment">
+                        <div class="ui inverted dimmer" id="dimmer">
+                            <div class="ui text loader">Waiting</div>
+                        </div>
+                        <div class="ui form">
+                            <h4 class="ui horizontal divider header">Submit your own message</h4>
+                            <div class="field">
+                                <label for="messageInput">Message</label>
+                                <input id="messageInput" type="text" value="" placeholder="Message" />
+                            </div>
+                            <div class="field">
+                                <label for="accounts_list">Accont</label>
+                                <select id="accounts_list" class="ui fluid dropdown"></select>
+                            </div>
+                            <button id="submit" class="ui button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="js/semantic.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/contractBinding.js"></script>
+    <script src="js/application.js"></script>
+</body>
 
 </html>

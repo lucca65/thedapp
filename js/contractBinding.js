@@ -8,7 +8,13 @@ window.addEventListener('load', function() {
 })
 
 function startApp() {
-  if (!web3.isConnected()) {
+  loadContract()
+  subscribeEvents()
+  loadAccounts()
+}
+
+function loadContract() {
+   if (!web3.isConnected()) {
     console.error('CANT CONNECT TO PARITY')
     return
   }
@@ -17,33 +23,32 @@ function startApp() {
   var abi = JSON.parse(abiString)
   var address = '0xaD98e5f4d62d0cE3E57C1b7DBFD50846d649b9Db'
   window.contract = web3.eth.contract(abi).at(address)
+}
 
-  contract.UpdateMessage().watch(function(error, message) {
+function subscribeEvents() {
+  contract.UpdateMessage((error, result) => {
     getMessage()
-    contract.message(function(error, result) {
-      alert(result)
-    })
+    document.getElementById('dimmer').classList.remove('active')
   })
+}
 
+function loadAccounts() {
   account = web3.eth.accounts[0];
-  console.log('account value is ', account)
-  var accountInterval = setInterval(function() {
+  var accountInterval = setInterval(() => {
     if (web3.eth.accounts[0] !== account) {
       populateAccounts(web3.eth.accounts);
-      account = web3.eth.accounts[0]
       getMessage()
     }
   }, 100);
 }
 
 function populateAccounts(accounts) {
-  console.log('populate accounts called')
-  var opts = "";
-  for (var i in accounts) {
-    // TODO GET SELECTE OPTIONS AND SET AGAIN
-    opts += '<option>' + accounts[i] + '</option>';
-  }
+  var opts = accounts.reduce((acc, currentAccount) => {
+    acc += `<option>${currentAccount}</option>`
+    return acc
+  }, "")
   document.getElementById('accounts_list').innerHTML = opts
+  account = web3.eth.accounts[0] // set first account
 }
 
 function getMessage() {
@@ -57,7 +62,7 @@ function getMessage() {
   })
 }
 
-function setMessage() {
+function updateMessage() {
   var selectedAccount = document.getElementById('accounts_list').value
   account = selectedAccount
   if (!selectedAccount) {
@@ -75,7 +80,10 @@ function setMessage() {
         console.error(error);
         return
       }
-      alert('posted')
+
+      // UI Config
+      document.getElementById('postedMessage').classList.remove('hidden')
+      document.getElementById('dimmer').classList.add('active')
     })
   })
 }
