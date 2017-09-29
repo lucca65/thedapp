@@ -22,7 +22,7 @@ contract TheDapp {
   function setMessage(string _message) public payable {
     require(msg.value == fee);
     message = _message;
-    OnUpdateMessage();
+    OnUpdateMessage(); // Emit event
   }
 
   function setFee(uint256 _fee) public onlyOwner {
