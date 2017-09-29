@@ -26,7 +26,7 @@ contract TheDapp {
   }
 
   function setFee(uint256 _fee) public onlyOwner {
-    fee = _fee;
+    fee = (_fee * 1 finney);
     OnUpdateFee();
   }
 
