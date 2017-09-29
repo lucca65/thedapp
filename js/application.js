@@ -17,7 +17,7 @@ tipButton.addEventListener('click', function() {
   web3.eth.sendTransaction({
     to: '0x00Df8e77d5fA0630144e147cCDB0B504F9C05A8D',
     from: user_address,
-    value: web3.toWei('0.1', 'finney')
+    value: web3.toWei('1.0', 'finney')
   }, function (err, transactionHash) {
     if (err) return alert('Oh no!: ' + err.message)
 
