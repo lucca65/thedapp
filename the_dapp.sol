@@ -6,31 +6,35 @@ contract TheDapp {
   address public owner;
   uint256 public fee;
 
-  // TODO: CHANGE THIS FOR A BETTER, MORE EVENT LIKE ONE
-  event UpdateMessage();
+  event OnUpdateMessage();
+  event OnUpdateFee();
 
   modifier onlyOwner() {
     require(msg.sender == owner);
     _;
   }
 
-  // Constructor
-  function TheDapp(uint256 _fee) {
-    this.owner = msg.sender;
-    this.fee = (_fee * 1 finney);
+  function TheDapp(uint256 _fee) public {
+    owner = msg.sender;
+    fee = (_fee * 1 finney);
   }
 
-  public function setMessage(string _message) payable {
-    require(msg.value == this.fee)
-    this.message = _message;
-    UpdateMessage(); // Emit Event
+  function setMessage(string _message) public payable {
+    require(msg.value == fee);
+    message = _message;
+    OnUpdateMessage();
   }
 
-  public withdraw() onlyOwner {
-    msg.sender.send(this.balance);
+  function setFee(uint256 _fee) public onlyOwner {
+    fee = (_fee * 1 finney);
+    OnUpdateFee();
   }
 
-  public kill() onlyOnwer {
-    selfdestruct(this.owner);
+  function withdraw(address addr) public onlyOwner {
+    addr.transfer(this.balance);
+  }
+
+  function kill() public onlyOwner {
+    selfdestruct(owner);
   }
 }
