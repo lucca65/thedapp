@@ -21,3 +21,5 @@ Now navigate to `localhost:8080` and test your solution
 
 - This project uses ES Script 2015+, so some browsers may not run it well, check your updates!
 - We do a little of dirty coding to update some UI elements, but we do that so no external framework is involved. That way you have a purer reference
+- The video of our presentation we can be found [here](https://www.youtube.com/watch?v=VTCzOxnJ5HI&feature=youtu.be)
+- Special thanks to @esdrasedu!
